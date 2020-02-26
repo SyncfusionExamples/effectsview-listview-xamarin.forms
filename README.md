@@ -56,3 +56,6 @@ public class Behavior : Behavior<SfEffectsView>
     }
 }
 ```
+**Output**
+
+![](https://github.com/SyncfusionExamples/effectsview-listview-xamarin.forms/blob/master/Screenshots/EffectsView.gif)
