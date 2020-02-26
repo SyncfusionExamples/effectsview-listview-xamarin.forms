@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewXamarin"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:effects="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             x:Class="ListViewXamarin.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:BookInfoRepository />
+    </ContentPage.BindingContext>
+
+    <sync:SfListView x:Name="listView" 
+                     Margin="5,40"
+                     AutoFitMode="Height"
+                     IsScrollingEnabled="False"
+                     SelectionMode="Single"
+                     ItemsSource="{Binding BookInfo}">
+
+        <sync:SfListView.LayoutManager>
+            <sync:GridLayout SpanCount="3"/>
+        </sync:SfListView.LayoutManager>
+
+        <sync:SfListView.SelectedItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <effects:SfEffectsView x:Name="effectsView"
+                                           SelectionColor="LightSeaGreen"                                    
+                                           IsSelected="True">
+                        <effects:SfEffectsView.Behaviors>
+                            <local:Behavior/>
+                        </effects:SfEffectsView.Behaviors>
+                        <StackLayout>
+                            <Label Text="{Binding BookName}" 
+                                   FontSize="21" 
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1" 
+                                   Text="{Binding BookDescription}" 
+                                   FontSize="15"/>
+                        </StackLayout>
+                    </effects:SfEffectsView>
+                </Grid>
+            </DataTemplate>
+        </sync:SfListView.SelectedItemTemplate>
+
+        <sync:SfListView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <StackLayout>
+                        <Label Text="{Binding BookName}" 
+                               FontSize="21" 
+                               FontAttributes="Bold"/>
+                        <Label Grid.Row="1" 
+                               Text="{Binding BookDescription}" 
+                               FontSize="15"/>
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </sync:SfListView.ItemTemplate>
+    </sync:SfListView>
+</ContentPage>
